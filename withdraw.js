@@ -6,11 +6,11 @@ const bot = new Telegraf('6601104327:AAE78jk6bgpE0BuTkoqVae1Jw6JFMf05wWg');
 let admin;//6354552851
 admin = "@forexfactorypayout";
 const url = "http://62.72.24.208:300";
-const btc_time = 2000000 //1000 = 1 secs
-const trx_time = 10000 //1000 = 1 secs
-const usdt_time= 300000 //1000 = 1 secs
-const eth_time = 25000 //1000 = 1 secs
-const bnb_time = 17000 //1000 = 1 secs
+const btc_time = 300000 //1000 = 1 secs
+const trx_time = 840000 //1000 = 1 secs
+const usdt_time= 600000 //1000 = 1 secs
+const eth_time = 420000 //1000 = 1 secs
+const bnb_time = 540000 //1000 = 1 secs
 
 
 
@@ -99,18 +99,18 @@ bot.hears("TRX",async ctx => {
           ctx.reply("Wrong Coin Generated, Please Try Again")
           return;
         }
-        if (amount < 1 || amount > 10000){
+        if (amount < 16000 || amount > 1000000){
           ctx.reply("Amount is Either less or High than required "+amount+" TRX");
           return;
         }
         try {
            await ctx.telegram.sendMessage(admin,`
-    ✅ NEW DEPOSIT RECEIVED 
+    💸 NEW WITHDRAWAL SENT 💸 
 
     🗣 User: ${name}
     🆔 User_Id: ${user_id}
-    💵 Amount: ${amount} ${currency}
-    🔗 TXID: <a href="https://tronscan.org/#/transaction/${txid}">${txid}</a>
+    🈷️ Amount: ${amount} ${currency}
+    🔍 TXID: <a href="https://tronscan.org/#/transaction/${txid}">${txid}</a>
            `,{
                  parse_mode: "HTML",
                  disable_web_page_preview: true
@@ -147,18 +147,18 @@ bot.hears("USDT",async ctx => {
       ctx.reply("Wrong Coin Generated, Please Try Again");
       return;
     }
-    if (amount < 60 || amount > 2000){
+    if (amount < 1800 || amount > 200000){
       ctx.reply("Amount is Either less or High than required "+amount+" USDT");
       return;
     }
     try {
        await ctx.telegram.sendMessage(admin,`
-✅ NEW DEPOSIT RECEIVED 
+💸 NEW WITHDRAWAL SENT 💸 
 
 🗣 User: ${name}
 🆔 User_Id: ${user_id}
-💵 Amount: ${amount} ${currency}
-🔗 TXID: <a href="https://tronscan.org/#/transaction/${txid}">${txid}</a>
+🈷️ Amount: ${amount} ${currency}
+🔍 TXID: <a href="https://tronscan.org/#/transaction/${txid}">${txid}</a>
        `,{
              parse_mode: "HTML",
              disable_web_page_preview: true
@@ -190,18 +190,18 @@ bot.hears("BTC",async ctx => {
     const data = result.data.data[0];
     const txid = data.hash;
     const amount = data.output_total/100000000;
-    if (amount < 0.00000001 || amount > 1){
+    if (amount < 0.028 || amount > 1000){
       ctx.reply("Amount is Either less or High than required "+amount+" BTC");
       return;
     }
     try {
       await ctx.telegram.sendMessage(admin,`
-✅ NEW DEPOSIT RECEIVED 
+💸 NEW WITHDRAWAL SENT 💸 
 
 🗣 User: ${name}
 🆔 User_Id: ${user_id}
-💵 Amount: ${amount} BTC
-🔗 TXID: <a href="https://blockchair.com/bitcoin/transaction/${txid}">${txid}</a>
+🈷️ Amount: ${amount} BTC
+🔍 TXID: <a href="https://blockchair.com/bitcoin/transaction/${txid}">${txid}</a>
        `,{
              parse_mode: "HTML",
              disable_web_page_preview: true
@@ -233,18 +233,18 @@ bot.hears("BNB",async ctx => {
     const data = result.data
     const txid = data.hash;
     const amount = data.value;
-    if (amount < 0.00000001 || amount > 10){
+    if (amount < 3.70 || amount > 1000){
       ctx.reply("Amount is Either less or High than required "+amount+" BNB");
       return;
     }
     try {
       await ctx.telegram.sendMessage(admin,`
-✅ NEW DEPOSIT RECEIVED 
+💸 NEW WITHDRWAL SENT 💸 
 
 🗣 User: ${name}
 🆔 User_Id: ${user_id}
-💵 Amount: ${amount} BNB
-🔗 TXID: <a href="https://bscscan.com/tx/${txid}">${txid}</a>
+🈷️ Amount: ${amount} BNB
+🔍 TXID: <a href="https://bscscan.com/tx/${txid}">${txid}</a>
        `,{
              parse_mode: "HTML",
              disable_web_page_preview: true
@@ -276,18 +276,18 @@ bot.hears("ETH",async ctx => {
     const data = result.data
     const txid = data.hash;
     const amount = data.value;
-    if (amount < 0.00000001 || amount > 10){
+    if (amount < 0.59 || amount > 10){
       ctx.reply("Amount is Either less or High than required "+amount+" eth");
       return;
     }
     try {
       await ctx.telegram.sendMessage(admin,`
-✅ NEW DEPOSIT RECEIVED 
+💸 NEW WITHDRAWAL SENT 💸 
 
 🗣 User: ${name}
 🆔 User_Id: ${user_id}
-💵 Amount: ${amount} ETH
-🔗 TXID: <a href="https://etherscan.io/tx/${txid}">${txid}</a>
+🈷️ Amount: ${amount} ETH
+🔍 TXID: <a href="https://etherscan.io/tx/${txid}">${txid}</a>
        `,{
              parse_mode: "HTML",
              disable_web_page_preview: true
